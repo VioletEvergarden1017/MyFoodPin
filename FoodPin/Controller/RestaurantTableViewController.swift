@@ -43,6 +43,11 @@ class RestaurantTableViewController: UITableViewController, RestaurantDataStore{
         // 给视图加上搜索列
         searchController = UISearchController(searchResultsController: nil)
         self.navigationItem.searchController = searchController
+        //tableView.tableHeaderView = searchController.searchBar (强制加入搜索栏至表格视图的头部)
+        // 指定目前类别为搜索结果更新器
+        searchController.searchResultsUpdater = self
+        // 控制搜索栏下的内容是否为暗淡的状态
+        searchController.obscuresBackgroundDuringPresentation = false
         
         // 个性化主页面，使背景透明化并更改标题的颜色
         if let appearance = navigationController?.navigationBar.standardAppearance {
@@ -70,6 +75,11 @@ class RestaurantTableViewController: UITableViewController, RestaurantDataStore{
         //tableView.backgroundView?.isHidden = true
         
         fetchRestaurantData()
+        
+        // 自定义searchBar样式
+        searchController.searchBar.placeholder = "Search restaurants..."
+        searchController.searchBar.backgroundImage = UIImage()
+        searchController.searchBar.tintColor = UIColor(named: "NavigationBarTitle")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,6 +115,11 @@ class RestaurantTableViewController: UITableViewController, RestaurantDataStore{
     
     // MARK: - UITableViewDelegate Protocol
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        // 当使用者在使用搜索栏的时候，返回一个空的设定（即不带分享，删除动作按钮）
+        if searchController.isActive {
+            return UISwipeActionsConfiguration()
+        }
         
         // Get the selected restaurant 获取一个选定的餐厅
         guard let restaurant = self.dataSource.itemIdentifier(for: indexPath) else {
@@ -204,12 +219,29 @@ class RestaurantTableViewController: UITableViewController, RestaurantDataStore{
     }
     
     // MARK: - fetchData
-    func fetchRestaurantData() {
-        print("Fetching restaurant data...")
-        let descriptor = FetchDescriptor<Restaurant>()
+    func fetchRestaurantData(searchText: String) {
+        //print("Fetching restaurant data...")
+        let descriptor: FetchDescriptor<Restaurant>
+        
+        // 搜索逻辑
+        if searchText.isEmpty {
+            descriptor = FetchDescriptor<Restaurant>()
+        } else {
+            // 当searchText不是空白的时候，建立一个predicate并将其分配给fetch descriptor
+            let predicate = #Predicate<Restaurant> {
+                // 补充搜索逻辑
+                ($0.name.localizedStandardContains(searchText)) ||
+                ($0.location.localizedStandardContains(searchText))
+            }
+            descriptor = FetchDescriptor<Restaurant> (predicate: predicate)
+        }
         restaurants = (try? container?.mainContext.fetch(descriptor)) ?? []
         updateSnapshot()
         //print("????")
+    }
+    // 简化原始的fetchRestaurantData
+    func fetchRestaurantData() {
+        fetchRestaurantData(searchText: "")
     }
     
     func updateSnapshot(animatingChange:Bool = false) {
@@ -228,5 +260,17 @@ class RestaurantTableViewController: UITableViewController, RestaurantDataStore{
     // 声明一个方法以使用回退segue
     @IBAction func close(segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - UISearchResultUpdateing协定
+extension RestaurantTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        guard let searchText = searchController.searchBar.text else {
+            return
+        }
+        
+        fetchRestaurantData(searchText: searchText)
     }
 }
