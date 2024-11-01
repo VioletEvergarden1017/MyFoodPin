@@ -4,11 +4,10 @@
 //
 //  Created by zhiye on 2024/10/30.
 //
-
 import UIKit
+import SwiftData
 
 class NewRestaurantController: UITableViewController {
-
     // 针对每一个文字栏玉文字视图建立Outlet变量
     @IBOutlet var nameTextField: RoundedTextField! {
         didSet {
@@ -54,9 +53,24 @@ class NewRestaurantController: UITableViewController {
         }
     }
     
+    
+    var container: ModelContainer?
+    var restaurant: Restaurant?
+    var dataStore: RestaurantDataStore?
+    
+    
     // 自定导航栏
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 实例化定义的两个参数
+        container = try? ModelContainer(for: Restaurant.self)
+        restaurant = Restaurant()
+        
+        // 使用者点击空白的时候返回键盘
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
         
         // customize the navigation bar appearance
         if let appearance = navigationController?.navigationBar.standardAppearance {// 获取导航栏
@@ -84,10 +98,8 @@ class NewRestaurantController: UITableViewController {
         // 定位图片视图的底部边线为 magin为(边距的底部边线)
         photoImageView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
         
-        // 使用者点击空白的时候返回键盘
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
+        
+        
     }
     
     
@@ -136,6 +148,51 @@ class NewRestaurantController: UITableViewController {
         }
         
     }
+    
+    @IBAction func saveButtonTapped(sender: AnyObject) {
+        
+        let textFields: [UITextField] = [nameTextField, typeTextField, addressTextField, phoneTextField]
+        // 声明一个警告窗口，当有个文字栏为空的时候呼出该窗口
+        let oops = UIAlertController(title: "Oops", message: "We can't proceed because one of the field is blank.Please note that all fields are required.", preferredStyle: .alert)
+        oops.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        // 检查文本框是否为空
+        for textField in textFields {
+            if textField.text?.isEmpty ?? true {
+                present(oops, animated: true, completion: nil)
+                return
+            }
+        }
+        // 检查文本视图是否为空
+        if descriptionTextView.text.isEmpty {
+            present(oops, animated: true, completion: nil)
+            return
+        }
+        
+        if let restaurant = restaurant {
+            restaurant.name = nameTextField.text ?? ""
+            restaurant.type = typeTextField.text ?? ""
+            restaurant.location = addressTextField.text ?? ""
+            restaurant.phone = phoneTextField.text ?? ""
+            restaurant.summary = descriptionTextView.text ?? ""
+            restaurant.isFavorite = false
+            
+            if let image = photoImageView.image {
+                restaurant.image = image
+            }
+            
+            container?.mainContext.insert(restaurant)
+            
+            print("Saving data to database...")
+        }
+        
+        dismiss(animated: true) {
+            self.dataStore?.fetchRestaurantData()
+            // 确保App从数据库总获取餐厅记录,在dismiss方法当中补充fetchData，指示App再次启动检索餐厅记录
+        }
+    }
+    
+    
 }
 
 // MARK: - 采用UITextFieldDelegate协定

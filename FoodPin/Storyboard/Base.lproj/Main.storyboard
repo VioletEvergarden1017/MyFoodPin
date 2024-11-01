@@ -225,6 +225,12 @@
                                 <segue destination="pIw-EN-yAU" kind="unwind" unwindAction="unwindToHomeWithSegue:" id="O0l-1P-H2w"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="t71-F0-SCu">
+                            <color key="tintColor" name="NavigationBarTitle"/>
+                            <connections>
+                                <action selector="saveButtonTappedWithSender:" destination="CFU-yb-ral" id="UJa-DJ-PjO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <size key="freeformSize" width="393" height="852"/>
                     <connections>
@@ -239,7 +245,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xa4-nd-e3f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="pIw-EN-yAU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1765.6488549618321" y="-752.11267605633805"/>
+            <point key="canvasLocation" x="1763" y="-898"/>
         </scene>
         <!--FoodPin-->
         <scene sceneID="XKp-hR-8yt">
@@ -395,12 +401,27 @@
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="6D1-7Z-7g7">
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
-                                <segue destination="1Tu-Px-Xmb" kind="presentation" id="IUw-NB-30v"/>
+                                <segue destination="1Tu-Px-Xmb" kind="presentation" identifier="addRestaurant" id="IUw-NB-30v"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emptyRestaurantView" destination="X9L-xo-geX" id="w8i-Xx-QzI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QmD-Uj-QRP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="S1d-QM-6L3">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="emptydata" translatesAutoresizingMaskIntoConstraints="NO" id="X9L-xo-geX">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="VTY-Tg-hPO"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="854.19847328244271" y="-76.056338028169023"/>
         </scene>
@@ -422,6 +443,10 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NAJ-9S-LhB" userLabel="Header Image View">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="445"/>
                                         </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NUw-ws-oQ7" userLabel="Dim View">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="445"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0wd-sU-AY7">
                                             <rect key="frame" x="323" y="373" width="50" height="52"/>
                                             <constraints>
@@ -429,10 +454,6 @@
                                                 <constraint firstAttribute="width" constant="50" id="m5Y-ck-an0"/>
                                             </constraints>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NUw-ws-oQ7" userLabel="Dim View">
-                                            <rect key="frame" x="8" y="8" width="377" height="429"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="l2R-S1-GNv">
                                             <rect key="frame" x="20" y="361" width="223" height="64"/>
                                             <subviews>
@@ -451,45 +472,25 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBB-YE-m6h">
-                                            <rect key="frame" x="312" y="40" width="71" height="50"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="71" id="t7x-0b-g58"/>
-                                                <constraint firstAttribute="height" constant="50" id="zod-WY-U8L"/>
-                                            </constraints>
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system">
-                                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
-                                            </buttonConfiguration>
-                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstItem="VBB-YE-m6h" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="B4f-YJ-y79" secondAttribute="leading" constant="20" symbolic="YES" id="56X-G3-kJj"/>
                                         <constraint firstAttribute="trailing" secondItem="NAJ-9S-LhB" secondAttribute="trailing" id="6EN-Ej-QSD"/>
-                                        <constraint firstItem="VBB-YE-m6h" firstAttribute="top" secondItem="B4f-YJ-y79" secondAttribute="top" constant="40" id="7Rx-2E-QYr"/>
                                         <constraint firstItem="NAJ-9S-LhB" firstAttribute="leading" secondItem="B4f-YJ-y79" secondAttribute="leading" id="Av3-db-ifI"/>
                                         <constraint firstAttribute="trailing" secondItem="0wd-sU-AY7" secondAttribute="trailing" constant="20" id="DXu-yJ-m8n"/>
+                                        <constraint firstItem="NUw-ws-oQ7" firstAttribute="top" secondItem="B4f-YJ-y79" secondAttribute="top" id="IjL-sf-8dx"/>
                                         <constraint firstItem="l2R-S1-GNv" firstAttribute="bottom" secondItem="0wd-sU-AY7" secondAttribute="bottom" id="J7M-QW-6Gh"/>
-                                        <constraint firstItem="NUw-ws-oQ7" firstAttribute="top" secondItem="B4f-YJ-y79" secondAttribute="topMargin" id="Jy4-lX-7Nj"/>
                                         <constraint firstAttribute="bottom" secondItem="l2R-S1-GNv" secondAttribute="bottom" constant="20" id="Lkd-cG-I1U"/>
-                                        <constraint firstItem="NAJ-9S-LhB" firstAttribute="top" secondItem="B4f-YJ-y79" secondAttribute="top" id="M2T-kP-bug"/>
-                                        <constraint firstAttribute="trailing" secondItem="VBB-YE-m6h" secondAttribute="trailing" constant="10" id="PwK-38-mFL"/>
                                         <constraint firstAttribute="bottom" secondItem="NAJ-9S-LhB" secondAttribute="bottom" id="SWa-Pw-cvM"/>
-                                        <constraint firstAttribute="trailing" secondItem="NAJ-9S-LhB" secondAttribute="trailing" id="WjK-4k-v8u"/>
                                         <constraint firstAttribute="trailing" secondItem="l2R-S1-GNv" secondAttribute="trailing" constant="150" id="aW6-7r-Ozd"/>
-                                        <constraint firstAttribute="bottom" secondItem="NAJ-9S-LhB" secondAttribute="bottom" id="cNU-L8-qUn"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="NUw-ws-oQ7" secondAttribute="trailing" id="hj3-Nl-ZMy"/>
                                         <constraint firstItem="l2R-S1-GNv" firstAttribute="leading" secondItem="B4f-YJ-y79" secondAttribute="leading" constant="20" id="j7r-nG-AQp"/>
-                                        <constraint firstItem="NAJ-9S-LhB" firstAttribute="leading" secondItem="B4f-YJ-y79" secondAttribute="leading" id="mTa-Lm-XAg"/>
-                                        <constraint firstItem="NUw-ws-oQ7" firstAttribute="leading" secondItem="B4f-YJ-y79" secondAttribute="leadingMargin" id="oRg-5G-vaE"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="NUw-ws-oQ7" secondAttribute="bottom" id="qVe-W3-UOQ"/>
+                                        <constraint firstItem="NUw-ws-oQ7" firstAttribute="leading" secondItem="B4f-YJ-y79" secondAttribute="leading" id="jnF-DV-xgd"/>
+                                        <constraint firstAttribute="bottom" secondItem="NUw-ws-oQ7" secondAttribute="bottom" id="qF1-jG-O6N"/>
+                                        <constraint firstAttribute="trailing" secondItem="NUw-ws-oQ7" secondAttribute="trailing" id="xbV-vh-0jc"/>
                                         <constraint firstItem="NAJ-9S-LhB" firstAttribute="top" secondItem="B4f-YJ-y79" secondAttribute="top" id="yFa-wf-xPM"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="headerImageView" destination="NAJ-9S-LhB" id="33h-4x-14j"/>
-                                        <outlet property="heartButton" destination="VBB-YE-m6h" id="A4z-qX-77i"/>
                                         <outlet property="nameLabel" destination="KAU-OE-3xR" id="Vly-TZ-Myn"/>
                                         <outlet property="ratingImageView" destination="0wd-sU-AY7" id="rJU-sS-JoK"/>
                                         <outlet property="typeLabel" destination="zne-17-fvH" id="1gl-2N-Sxn"/>
@@ -501,7 +502,7 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfH-eG-kWN">
                                             <rect key="frame" x="20" y="20" width="353" height="50"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <color key="tintColor" name="NavigationBarTitle"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="filled" title="Rate it">
@@ -647,16 +648,23 @@
                             <constraint firstItem="8ii-OU-Fpu" firstAttribute="trailing" secondItem="tOi-Iv-cln" secondAttribute="trailing" id="x3t-41-KG5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="dBq-Uw-Kx2"/>
+                    <navigationItem key="navigationItem" id="dBq-Uw-Kx2">
+                        <barButtonItem key="rightBarButtonItem" image="heart" catalog="system" id="Kpj-Wt-ERO">
+                            <connections>
+                                <action selector="saveFavorite" destination="Hl9-eN-1jS" id="Kp4-V9-C69"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <size key="freeformSize" width="393" height="1200"/>
                     <connections>
+                        <outlet property="favoriteBarButton" destination="Kpj-Wt-ERO" id="3rC-Wa-Wdh"/>
                         <outlet property="headerView" destination="B4f-YJ-y79" id="mwO-bX-qRj"/>
                         <outlet property="tableView" destination="8ii-OU-Fpu" id="Oyk-Lm-4If"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOY-bv-2Zr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1764" y="46"/>
+            <point key="canvasLocation" x="1762.5954198473282" y="45.774647887323944"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="yZb-0I-SIQ">
@@ -687,7 +695,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fk8-Du-oqv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2682" y="-76"/>
+            <point key="canvasLocation" x="2538" y="-76"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="udJ-13-CCF">
@@ -797,7 +805,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E32-y6-pBF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="fte-I5-FdU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2682" y="592"/>
+            <point key="canvasLocation" x="2537" y="574"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Avf-F6-r6a">
@@ -833,15 +841,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Hz-zc-xlQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="838.93129770992368" y="-752.11267605633805"/>
+            <point key="canvasLocation" x="854" y="-897"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gTo-yS-doy"/>
+        <segue reference="M8t-gg-bb9"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="angry" width="78" height="103"/>
         <image name="cool" width="78" height="83"/>
+        <image name="emptydata" width="1440" height="1024"/>
         <image name="happy" width="78" height="86"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
@@ -860,10 +869,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

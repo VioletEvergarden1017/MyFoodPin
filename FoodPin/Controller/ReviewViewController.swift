@@ -20,7 +20,7 @@ class ReviewViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        backgroundImageView.image = UIImage(named: restaurant.image)
+        backgroundImageView.image = restaurant.image
         
         // Applying the blur effect 启用背景模糊效果
         let blurEffect = UIBlurEffect(style: .dark) // 可选效果.dark .light .extralight

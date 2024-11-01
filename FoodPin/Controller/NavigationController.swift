@@ -14,9 +14,5 @@ class NavigationController: UINavigationController {
         return topViewController?.preferredStatusBarStyle ?? .default
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
     
 }

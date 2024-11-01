@@ -11,37 +11,11 @@ class RestaurantDetailViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var headerView: RestaurantDetailHeaderView!
-    var restaurant: Restaurant = Restaurant()
-    // 声明一个方法以使用回退segue
-    @IBAction func close(segue: UIStoryboardSegue) {
-        dismiss(animated: true, completion: nil)
-    }
-    // 声明一个方法与评价按钮对应，并添加一些动画效果
-    @IBAction func rateRestaurant(segue: UIStoryboardSegue) {
-        
-        guard let identifier = segue.identifier else {
-            return
-        }
-        
-        dismiss(animated: true, completion: {
-            if let rating = Restaurant.Rating(rawValue: identifier) {
-                self.restaurant.rating = rating
-                self.headerView.ratingImageView.image = UIImage(named: rating.image)
-            }
-            // add a scale animation
-            let scaleTransform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
-            self.headerView.ratingImageView.transform = scaleTransform
-            self.headerView.ratingImageView.alpha = 0 // 设定初始状态
-            // apply the animation
-            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.7, options: [], animations: {
-                self.headerView.ratingImageView.transform = .identity
-                self.headerView.ratingImageView.alpha = 1
-            }, completion: nil)
-        })
-
-    }
-
+    @IBOutlet var favoriteBarButton: UIBarButtonItem!
     
+    var restaurant: Restaurant = Restaurant()
+    var dataStore: RestaurantDataStore?
+
     //MARK: - 细节视图控制器生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,11 +28,10 @@ class RestaurantDetailViewController: UIViewController {
         // Configure header view
         headerView.nameLabel.text = restaurant.name
         headerView.typeLabel.text = restaurant.type
-        headerView.headerImageView.image = UIImage(named: restaurant.image)
+        headerView.headerImageView.image = restaurant.image
         
-        let heartImage = restaurant.isFavorite ? "heart.fill" : "heart"
-        headerView.heartButton.tintColor = restaurant.isFavorite ? .systemYellow : .white
-        headerView.heartButton.setImage(UIImage(systemName: heartImage), for: .normal)
+        // Configure Favorite icon
+        configureFavoriteIcon()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -91,6 +64,35 @@ class RestaurantDetailViewController: UIViewController {
         }
     }
     
+
+    // 声明一个方法与评价按钮对应，并添加一些动画效果
+    @IBAction func rateRestaurant(segue: UIStoryboardSegue) {
+        
+        guard let identifier = segue.identifier else {
+            return
+        }
+        
+        dismiss(animated: true, completion: {
+            if let rating = Restaurant.Rating(rawValue: identifier) {
+                self.restaurant.rating = rating
+                self.headerView.ratingImageView.image = UIImage(named: rating.image)
+            }
+            // add a scale animation
+            let scaleTransform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
+            self.headerView.ratingImageView.transform = scaleTransform
+            self.headerView.ratingImageView.alpha = 0 // 设定初始状态
+            // apply the animation
+            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.7, options: [], animations: {
+                self.headerView.ratingImageView.transform = .identity
+                self.headerView.ratingImageView.alpha = 1
+            }, completion: nil)
+        })
+
+    }
+    
+    @IBAction func close(segue: UIStoryboardSegue) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 
@@ -108,7 +110,7 @@ extension RestaurantDetailViewController: UITableViewDataSource, UITableViewDele
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailTextCell.self), for: indexPath) as! RestaurantDetailTextCell
             
-            cell.descriptionLabel.text = restaurant.description
+            cell.descriptionLabel.text = restaurant.summary
             cell.selectionStyle = .none
             return cell
             
@@ -136,5 +138,23 @@ extension RestaurantDetailViewController: UITableViewDataSource, UITableViewDele
         }
     }
     
+    // MARK: - Favorite Function
+    
+    @IBAction func saveFavorite() {
+        
+        restaurant.isFavorite.toggle()
+                
+        configureFavoriteIcon()// 见下
+
+        dataStore?.updateSnapshot(animatingChange: false)
+        
+    }
+    
+    func configureFavoriteIcon() {
+        let heartImage = restaurant.isFavorite ? "heart.fill" : "heart"
+        let heartIconConfiguration = UIImage.SymbolConfiguration(pointSize: 25, weight: .semibold)
+        favoriteBarButton.image = UIImage(systemName: heartImage, withConfiguration: heartIconConfiguration)
+        favoriteBarButton.tintColor = restaurant.isFavorite ? .systemYellow : .white
+    }
 }
 
