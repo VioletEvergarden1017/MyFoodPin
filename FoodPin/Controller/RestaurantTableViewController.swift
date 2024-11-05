@@ -257,6 +257,22 @@ class RestaurantTableViewController: UITableViewController, RestaurantDataStore{
         //print("更新视图中")
     }
     
+    // MARK: - 显示导览画面
+    override func viewDidAppear(_ animated: Bool) {
+        // 补充逻辑判断是否需要呈现导览视图控制器
+        if UserDefaults.standard.bool(forKey: "hasViewWalkthrough") {
+            return
+        }
+        
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        if let walkthroughViewController = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController") as? WalkthroughViewController {
+            
+            present(walkthroughViewController, animated: true, completion: nil)
+        }
+        
+ 
+    }
+    
     // 声明一个方法以使用回退segue
     @IBAction func close(segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: nil)
@@ -273,4 +289,5 @@ extension RestaurantTableViewController: UISearchResultsUpdating {
         
         fetchRestaurantData(searchText: searchText)
     }
+    
 }

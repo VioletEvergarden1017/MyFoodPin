@@ -26,6 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().standardAppearance = navBarApperance
         UINavigationBar.appearance().compactAppearance = navBarApperance
         UINavigationBar.appearance().scrollEdgeAppearance = navBarApperance
+        
+        
+        // 自定义标签栏
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithDefaultBackground()
+        
+        UITabBar.appearance().tintColor = UIColor(named: "NavigationBarTitle")
+        UITabBar.appearance().standardAppearance = tabBarAppearance
     
         return true
     }

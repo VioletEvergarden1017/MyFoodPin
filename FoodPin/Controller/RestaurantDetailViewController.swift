@@ -55,11 +55,13 @@ class RestaurantDetailViewController: UIViewController {
         case "showMap":    // 情况为「显示地图」
             let destinationController = segue.destination as! MapViewController
             destinationController.restaurant = restaurant
+            destinationController.hidesBottomBarWhenPushed = true // 隐藏标签列
             
         case "showReview": // 情况为「显示评价」
             let destinationController = segue.destination as! ReviewViewController
             destinationController.restaurant = restaurant
-        
+            destinationController.hidesBottomBarWhenPushed = true
+            
         default: break
         }
     }
