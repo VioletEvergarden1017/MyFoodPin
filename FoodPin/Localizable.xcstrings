@@ -1,0 +1,277 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Camera" : {
+      "comment" : "Camera",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "相机"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "comment" : "Cancel",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
+          }
+        }
+      }
+    },
+    "Choose your photo source" : {
+      "comment" : "Choose your photo source",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择你的照片来源"
+          }
+        }
+      }
+    },
+    "CREATE YOUR FOOD GUIDE" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "建立你自己的就餐引导"
+          }
+        }
+      }
+    },
+    "Delete" : {
+      "comment" : "Delete",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除"
+          }
+        }
+      }
+    },
+    "DISCOVER GREAT RESTAURANT" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "发现优质餐厅"
+          }
+        }
+      }
+    },
+    "Facebook" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "脸书"
+          }
+        }
+      }
+    },
+    "Find restaurants shared by your friends and other foodies" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "发现朋友和其他食客所分享的餐厅"
+          }
+        }
+      }
+    },
+    "GET SRARTED" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "立马开始"
+          }
+        }
+      }
+    },
+    "Instagram" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ins"
+          }
+        }
+      }
+    },
+    "Just checking in at " : {
+      "comment" : "Just checking in at",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "马上预定"
+          }
+        }
+      }
+    },
+    "NEXT" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一步"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "Oops" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "糟糕"
+          }
+        }
+      }
+    },
+    "Photo Library" : {
+      "comment" : "Photo Library",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "图库"
+          }
+        }
+      }
+    },
+    "Pin your favorite restaurants and create your own food guide" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标记你喜爱的餐厅并建立你自己的就餐引导"
+          }
+        }
+      }
+    },
+    "Rate us on App Store" : {
+      "comment" : "Rate us on App Store",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在AppStore给我们打分"
+          }
+        }
+      }
+    },
+    "Saving data to database..." : {
+      "comment" : "Saving data to database",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "存储数据至数据库…"
+          }
+        }
+      }
+    },
+    "Search and locate your favorite restaurant on Maps" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在地图上搜索和定位你喜爱的餐厅"
+          }
+        }
+      }
+    },
+    "Search restaurants..." : {
+      "comment" : "Search restaurants",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜索餐厅"
+          }
+        }
+      }
+    },
+    "setting the dataStore" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置数据库"
+          }
+        }
+      }
+    },
+    "Share" : {
+      "comment" : "Share",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "分享"
+          }
+        }
+      }
+    },
+    "SHOW YOU THE LOCATION" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "展示地址给你"
+          }
+        }
+      }
+    },
+    "Tell us your feedback" : {
+      "comment" : "Tell us your feedback",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "告诉我们你的反馈"
+          }
+        }
+      }
+    },
+    "Twitter" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "推特"
+          }
+        }
+      }
+    },
+    "We can't proceed because one of the field is blank.Please note that all fields are required." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法提交表单，因为有一个文字栏是空白的。请注意所有的栏都是需要的。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

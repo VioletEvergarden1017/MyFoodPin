@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		951071B52CD4C764009ED0E3 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951071B42CD4C764009ED0E3 /* Onboarding.storyboard */; };
+		951604FA2CDA0E1200513906 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 951604F92CDA0E1200513906 /* Localizable.xcstrings */; };
+		951604FD2CDA129100513906 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951604FC2CDA129100513906 /* Onboarding.storyboard */; };
 		95260EAB2CD87B7D007CB7D2 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95260EAA2CD87B7D007CB7D2 /* WebViewController.swift */; };
 		955D23FC2CCFDEEC001F5281 /* RestaurantDetailMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955D23FB2CCFDEEC001F5281 /* RestaurantDetailMapCell.swift */; };
 		95777FF52CD1CA57008A4256 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95777FF42CD1CA57008A4256 /* ReviewViewController.swift */; };
@@ -42,7 +43,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		951071B42CD4C764009ED0E3 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		951604F12CDA0DAC00513906 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/About.strings"; sourceTree = "<group>"; };
+		951604F22CDA0DAC00513906 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Discover.strings"; sourceTree = "<group>"; };
+		951604F32CDA0DAD00513906 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		951604F42CDA0DAD00513906 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		951604F52CDA0DB700513906 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/About.strings"; sourceTree = "<group>"; };
+		951604F62CDA0DB700513906 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Discover.strings"; sourceTree = "<group>"; };
+		951604F72CDA0DB700513906 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		951604F82CDA0DB700513906 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		951604F92CDA0E1200513906 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		951604FB2CDA129100513906 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
+		951604FE2CDA129100513906 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Onboarding.xcstrings; sourceTree = "<group>"; };
 		95260EAA2CD87B7D007CB7D2 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		955D23FB2CCFDEEC001F5281 /* RestaurantDetailMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailMapCell.swift; sourceTree = "<group>"; };
 		95777FF42CD1CA57008A4256 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
@@ -163,7 +174,7 @@
 				95E237B62CD86DFA008BD8B6 /* Discover.storyboard */,
 				F4B6E3852914AB810054B169 /* Main.storyboard */,
 				F4B6E38A2914AB820054B169 /* LaunchScreen.storyboard */,
-				951071B42CD4C764009ED0E3 /* Onboarding.storyboard */,
+				951604FC2CDA129100513906 /* Onboarding.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -197,6 +208,7 @@
 				F4B6E3812914AB810054B169 /* SceneDelegate.swift */,
 				F4B6E3882914AB820054B169 /* Assets.xcassets */,
 				F4B6E38D2914AB820054B169 /* Info.plist */,
+				951604F92CDA0E1200513906 /* Localizable.xcstrings */,
 			);
 			path = FoodPin;
 			sourceTree = "<group>";
@@ -243,6 +255,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = F4B6E3732914AB810054B169;
 			productRefGroup = F4B6E37D2914AB810054B169 /* Products */;
@@ -264,10 +278,11 @@
 				95DE25A92CCE791F00A62FEF /* Nunito-Regular.ttf in Resources */,
 				95DE25AA2CCE791F00A62FEF /* Nunito-Bold.ttf in Resources */,
 				95DE25A32CCE59E100A62FEF /* Nunito-Italic-VariableFont_wght.ttf in Resources */,
+				951604FA2CDA0E1200513906 /* Localizable.xcstrings in Resources */,
 				95DE25A42CCE59E100A62FEF /* Nunito-VariableFont_wght.ttf in Resources */,
 				95E237BB2CD86E16008BD8B6 /* About.storyboard in Resources */,
 				F4B6E3872914AB810054B169 /* Main.storyboard in Resources */,
-				951071B52CD4C764009ED0E3 /* Onboarding.storyboard in Resources */,
+				951604FD2CDA129100513906 /* Onboarding.storyboard in Resources */,
 				95E237B82CD86DFA008BD8B6 /* Discover.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,10 +322,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		951604FC2CDA129100513906 /* Onboarding.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				951604FB2CDA129100513906 /* Base */,
+				951604FE2CDA129100513906 /* mul */,
+			);
+			name = Onboarding.storyboard;
+			sourceTree = "<group>";
+		};
 		95E237B62CD86DFA008BD8B6 /* Discover.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				95E237B72CD86DFA008BD8B6 /* Base */,
+				951604F22CDA0DAC00513906 /* zh-Hans */,
+				951604F62CDA0DB700513906 /* zh-Hant */,
 			);
 			name = Discover.storyboard;
 			sourceTree = "<group>";
@@ -319,6 +345,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				95E237BA2CD86E16008BD8B6 /* Base */,
+				951604F12CDA0DAC00513906 /* zh-Hans */,
+				951604F52CDA0DB700513906 /* zh-Hant */,
 			);
 			name = About.storyboard;
 			sourceTree = "<group>";
@@ -327,6 +355,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4B6E3862914AB810054B169 /* Base */,
+				951604F32CDA0DAD00513906 /* zh-Hans */,
+				951604F72CDA0DB700513906 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -335,6 +365,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4B6E38B2914AB820054B169 /* Base */,
+				951604F42CDA0DAD00513906 /* zh-Hans */,
+				951604F82CDA0DB700513906 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -346,6 +378,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -399,6 +432,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -407,6 +441,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -453,6 +488,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};

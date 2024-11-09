@@ -107,9 +107,9 @@ class NewRestaurantController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             // 使用UIAlertController建立一个动作选单
-            let photoSourceRequestController = UIAlertController(title: "", message: "Choose your photo source", preferredStyle: .actionSheet)
+            let photoSourceRequestController = UIAlertController(title: "", message: String(localized: "Choose your photo source", comment: "Choose your photo source"), preferredStyle: .actionSheet)
             // 「拍摄照片」动作
-            let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: {
+            let cameraAction = UIAlertAction(title: String(localized: "Camera", comment: "Camera"), style: .default, handler: {
                 (action) in if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     let imagePicker = UIImagePickerController()
                     imagePicker.allowsEditing = false
@@ -120,7 +120,7 @@ class NewRestaurantController: UITableViewController {
                 }
             })
             // 「图库」动作
-            let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default, handler: {
+            let photoLibraryAction = UIAlertAction(title: String(localized: "Photo Library", comment: "Photo Library"), style: .default, handler: {
                 (action) in if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                     let imagePicker = UIImagePickerController()
                     imagePicker.allowsEditing = false
@@ -130,7 +130,7 @@ class NewRestaurantController: UITableViewController {
                 }
             })
             // 「取消」动作
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let cancelAction = UIAlertAction(title: String(localized: "Cancel", comment: "Cancel"), style: .cancel)
             
             // add action
             photoSourceRequestController.addAction(cameraAction)
@@ -153,8 +153,8 @@ class NewRestaurantController: UITableViewController {
         
         let textFields: [UITextField] = [nameTextField, typeTextField, addressTextField, phoneTextField]
         // 声明一个警告窗口，当有个文字栏为空的时候呼出该窗口
-        let oops = UIAlertController(title: "Oops", message: "We can't proceed because one of the field is blank.Please note that all fields are required.", preferredStyle: .alert)
-        oops.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        let oops = UIAlertController(title: String(localized: "Oops"), message: String(localized: "We can't proceed because one of the field is blank.Please note that all fields are required."), preferredStyle: .alert)
+        oops.addAction(UIAlertAction(title: String(localized: "OK"), style: .default, handler: nil))
         
         // 检查文本框是否为空
         for textField in textFields {
@@ -183,7 +183,7 @@ class NewRestaurantController: UITableViewController {
             
             container?.mainContext.insert(restaurant)
             
-            print("Saving data to database...")
+            print(String(localized: "Saving data to database...", comment: "Saving data to database"))
         }
         
         dismiss(animated: true) {

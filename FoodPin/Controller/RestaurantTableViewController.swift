@@ -77,7 +77,7 @@ class RestaurantTableViewController: UITableViewController, RestaurantDataStore{
         fetchRestaurantData()
         
         // 自定义searchBar样式
-        searchController.searchBar.placeholder = "Search restaurants..."
+        searchController.searchBar.placeholder = String(localized: "Search restaurants...", comment: "Search restaurants")
         searchController.searchBar.backgroundImage = UIImage()
         searchController.searchBar.tintColor = UIColor(named: "NavigationBarTitle")
     }
@@ -127,7 +127,7 @@ class RestaurantTableViewController: UITableViewController, RestaurantDataStore{
         }
         
         // Delete action 「删除」动作
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
+        let deleteAction = UIContextualAction(style: .destructive, title: String(localized: "Delete", comment: "Delete")) { (action, sourceView, completionHandler) in
             
             var snapshot = self.dataSource.snapshot()
             snapshot.deleteItems([restaurant])
@@ -139,8 +139,8 @@ class RestaurantTableViewController: UITableViewController, RestaurantDataStore{
         }
         
         // Share action 「分享」动作
-        let shareAction = UIContextualAction(style: .normal, title: "Share") { (action, sourceView, completionHandler) in
-            let defaultText = "Just checking in at " + restaurant.name
+        let shareAction = UIContextualAction(style: .normal, title: String(localized: "Share", comment: "Share")) { (action, sourceView, completionHandler) in
+            let defaultText = String(localized: "Just checking in at ", comment: "Just checking in at") + restaurant.name
             
             let activityController: UIActivityViewController
             activityController = UIActivityViewController(activityItems: [defaultText, restaurant.image], applicationActivities: nil)
@@ -210,7 +210,7 @@ class RestaurantTableViewController: UITableViewController, RestaurantDataStore{
 
             if let navController = segue.destination as? UINavigationController,
                 let destinationController = navController.topViewController as? NewRestaurantController {
-                print("setting the dataStore")
+                print(String(localized: "setting the dataStore"))
                 // 补充代码更新数据，即使用SwiftData获取资料
                 destinationController.dataStore = self
             }
@@ -260,7 +260,7 @@ class RestaurantTableViewController: UITableViewController, RestaurantDataStore{
     // MARK: - 显示导览画面
     override func viewDidAppear(_ animated: Bool) {
         // 补充逻辑判断是否需要呈现导览视图控制器
-        if UserDefaults.standard.bool(forKey: "hasViewWalkthrough") {
+        if UserDefaults.standard.bool(forKey: "hasViewedWalkthrough") {
             return
         }
         
